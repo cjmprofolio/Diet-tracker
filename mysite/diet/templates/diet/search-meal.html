@@ -1,0 +1,55 @@
+<div class="container pt-sm-3">
+    <div class="d-flex justify-content-between">
+        <div class="p-2 align-self-center"><h4>Meal List</h4></div>
+        <div class="p-2 ">
+            <form method="GET" action="">
+                {% csrf_token %}
+                <div class="row mb-sm-2">
+                    <div class="col">
+                        <div class="input-group">
+                            <span class="input-group-text" for="start_date">Date from</span>
+                            <input type="text" id="start_date" class="form-control datetimepicker" placeholder="YYYY-MM-DD" name="start_date" value="{{ start_date }}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group">
+                            <span class="input-group-text" for="end_date">Date to</span>
+                            <input type="text" id="end_date" class="form-control datetimepicker" placeholder="YYYY-MM-DD" name="end_date">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group">
+                            <span class="input-group-text" id="meal">Meal</span>
+                            <select class="custom-select" id="meal" name="meal">
+                                <option selected></option>
+                                <option value="Breakfast">Breakfast</option>
+                                <option value="Brunch">Brunch</option>
+                                <option value="Lunch">Lunch</option>
+                                <option value="Dinner">Dinner</option>
+                                <option value="Dessert">Dessert</option>
+                                <option value="Midnight Snack">Midnight Snack</option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group">
+                            <span class="input-group-text" id="food_name">Food name</span>
+                            <input type="text" class="form-control" placeholder="food" id="food_name" name="food_name">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group">
+                            <span class="input-group-text" id="location">location</span>
+                            <input type="text" class="form-control" placeholder="location" id="location" name="location">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <a href=""><button type="submit" class="btn btn-outline-primary">Search</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+</div>

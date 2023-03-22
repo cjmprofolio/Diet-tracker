@@ -1,0 +1,40 @@
+{% extends 'diet/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+{% include 'diet/search-meal.html' %}
+
+<div class="container pt-md-1">
+<table class="table table-sm table-bordered text-center">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col" class="col-1"></th>
+        <th scope="col" class="col-2">Date</th>
+        <th scope="col" class="col-2">Meal</th>
+        <th scope="col" class="col-2">Food name</th>
+        <th scope="col" class="col-2">Calorie</th>
+        <th scope="col" class="col-2">Location</th>
+    </thead>
+    <tbody>
+        {% if object_list %}
+            {% for meal in object_list %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ meal.date|date:"o-m-d" }}</td>
+                <td>{{ meal.meal }}</td>
+                <td>{{ meal.food_name }}</td>
+                <td>{{ meal.calorie }}</td>
+                <td>{{ meal.location }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+            <td style="text-align: center ;" colspan="6">No meal available...</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'diet/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+{{ k }}
+    <div class="container pt-md-5">
+        <div class="row">
+            <div class="col-md-4">
+            <form action="" method="POST">
+                {% csrf_token%}
+                <p>Are you sure you want to delete "{{ object }}"?</p>
+                
+                {{ form }}
+
+                <button type="submit" class="btn btn-primary">
+                    Confirm</button>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'diet/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container pt-md-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                    <form method="POST">
+                        <div class="card-body">
+                            <label for="username" class="form-label">{{ form.username.label_tag }}</label>
+                            <input type="text" class="form-control" id="username" placeholder="your name">
+                        </div>
+                        <div class="card-body">
+                            <label for="username" class="form-label">{{ form.email.label_tag }}</label>
+                            <input type="text" class="form-control" id="username" placeholder="name@example.com">
+                        </div>
+                        <div class="card-body">
+                            <label for="username" class="form-label">{{ form.password1.label_tag }}</label>
+                            <input type="text" class="form-control" id="username" placeholder="password">
+                        </div>
+                        <div class="card-body">
+                            <label for="username" class="form-label">{{ form.password2.label_tag }}</label>
+                            <input type="text" class="form-control" id="username" placeholder="password again">
+                        </div>
+                    <!-- <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                        class="fw-bold text-body"><u>Login here</u></a></p> -->
+                        <div class="card-body">
+                            <button type="submit" class="card-body btn btn-primary">Sign up</button>
+                        </div>
+                        <input type="hidden" name="next" value="{% url 'diet:home' %}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

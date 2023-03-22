@@ -1,0 +1,39 @@
+{% extends 'diet/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="container pt-md-5">
+    <div class="d-flex justify-content-between">
+        <div><a href="{% url 'diet:home' pre_yr pre_mn %}" value="">&lsaquo;Previous</a></div>
+        <div class="fs-4"> {{year}} {{month}} </div>        
+        <div><a href="{% url 'diet:home' nxt_yr nxt_mn %}">Next&rsaquo;</a></div>
+    </div>
+    <table class="table table-light table-bordered">
+        </tr>
+        <tr class="col-1">
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+        </tr>
+        {% for days in days_list %}
+        <tr class="col-1">
+            {% for day in days %}
+            {% if day != '' %}
+            <td><a href="{% url 'diet:meals-by-day' year month day %}" class="text-decoration-none text-dark">{{ day }}</a>
+            </td>
+            {% else %}
+            <td>{{ day }}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <p class="fs-6">Choose date you wanna to add/update meal record</p>
+</div>
+{% endblock %}

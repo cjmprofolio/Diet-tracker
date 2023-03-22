@@ -1,0 +1,24 @@
+{% extends 'diet/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container pt-md-5">
+    <h3>Add meals</h3>
+    <div class="row">
+        <div class="col-md-4">
+        <form action="" method="POST">
+            {% csrf_token%}
+            
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary">
+                Add meal</button>
+
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
