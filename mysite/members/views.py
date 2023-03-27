@@ -19,6 +19,15 @@ class Useregister(CreateView):
     form_class= RegisterForm
     success_url= reverse_lazy('diet:home')
 
+    def form_valid(self, form):
+        response= super().form_valid(form)
+
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
+        user = authenticate(username=username, password=password)
+        login(self.request, user)
+
+        return response
     
 
 # def login_user(request):

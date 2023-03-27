@@ -5,10 +5,16 @@
 
 {% block content %}
 <div class="container pt-md-5">
+    <div class="card text-dark bg-light mb-3">
+        <div class="card-body fs-5 fw-bold">
+            Hello, {{ username }}. Welcome back to Diet-Tracker. Keep going on taking down your daily meals!!!
+        </div>
+    </div>
     <div class="d-flex justify-content-between">
-        <div><a href="{% url 'diet:home' pre_yr pre_mn %}" value="">&lsaquo;Previous</a></div>
-        <div class="fs-4"> {{year}} {{month}} </div>        
-        <div><a href="{% url 'diet:home' nxt_yr nxt_mn %}">Next&rsaquo;</a></div>
+        <div><a class="btn-sm btn-outline-secondary" href="{% url 'diet:home' pre_yr pre_mn %}">&lsaquo;Previous</a></div>
+        <div class="fs-4"> {{ month }} {{ year }}
+        </div>        
+        <div><a class="btn-sm btn-outline-secondary" href="{% url 'diet:home' nxt_yr nxt_mn %}" >Next&rsaquo;</a></div>
     </div>
     <table class="table table-light table-bordered">
         </tr>
@@ -34,6 +40,17 @@
         </tr>
         {% endfor %}
     </table>
-    <p class="fs-6">Choose date you wanna to add/update meal record</p>
+    <div class="card border-secondary mb-3">
+        <div class="card-header">
+            Instructions
+        </div>
+        <div class="card-body fs-7">
+            You can pick up the date you want to add/ update meals, and also view all/ filtered meals on Meals history page.
+            <!-- <form method="GET">
+                <input type="text" id="calendar" name="cal" style="text-align: center;" >
+                <button class="btn-sm btn-outline-primary">Submit</button>
+            </form> -->
+        </div>
+    </div>
 </div>
 {% endblock %}

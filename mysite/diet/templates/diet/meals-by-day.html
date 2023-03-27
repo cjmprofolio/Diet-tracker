@@ -10,9 +10,8 @@
             <strong> <h4>{{ date }}</h4> </strong>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group">
-                    <a href="{% url 'diet:add-meal' year month day %}">
-                      <button type="button" class="btn btn-outline-primary">
-                        Add Meal</button></a>
+                    <a class="btn btn-outline-primary" href="{% url 'diet:add-meal' year month day %}">
+                        Add Meal</a>
                 </div>
             </div>
         </div>

@@ -28,15 +28,35 @@
 
     <!-- add for datepicker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- <link rel="stylesheet" href="//resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
     $( function() {
-      $( "#start_date" ).datepicker({ dateFormat: 'yy-mm-dd' , minDate: "-1y", maxDate: 0 });
-      $( "#end_date" ).datepicker({ dateFormat: 'yy-mm-dd', minDate: "-1y", maxDate: 0 })
+      $( "#start_date" ).datepicker({ dateFormat: 'yy-mm-dd' , minDate: "-1y", maxDate: 0, showOtherMonths: true, });
+      $( "#end_date" ).datepicker({ dateFormat: 'yy-mm-dd', minDate: "-1y", maxDate: 0, showOtherMonths: true, });
+      $( "#calendar" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'MM yy',
+        beforeShow: function(input) {
+          $(input).datepicker("widget").addClass('hide-calendar');
+        },
+        onClose: function(dateText, inst) {
+          $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+          
+        }
+      }
+      )
+      $( "#calendar" ).datepicker('setDate', new Date())
     } );
     </script>
+    <style>
+    .hide-calendar .ui-datepicker-calendar {
+        display: none;
+    }
+    </style>
+    
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

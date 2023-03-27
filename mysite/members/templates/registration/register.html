@@ -12,21 +12,22 @@
                 <div class="card-body p-5">
                     <h2 class="text-uppercase text-center mb-5">Create an account</h2>
                     <form method="POST">
+                        {% csrf_token %}
                         <div class="card-body">
                             <label for="username" class="form-label">{{ form.username.label_tag }}</label>
-                            <input type="text" class="form-control" id="username" placeholder="your name">
+                            {{ form.username }}
                         </div>
                         <div class="card-body">
-                            <label for="username" class="form-label">{{ form.email.label_tag }}</label>
-                            <input type="text" class="form-control" id="username" placeholder="name@example.com">
+                            <label for="email" class="form-label">{{ form.email.label_tag }}</label>
+                            {{ form.email }}
                         </div>
                         <div class="card-body">
                             <label for="username" class="form-label">{{ form.password1.label_tag }}</label>
-                            <input type="text" class="form-control" id="username" placeholder="password">
+                            {{ form.password1 }}
                         </div>
                         <div class="card-body">
                             <label for="username" class="form-label">{{ form.password2.label_tag }}</label>
-                            <input type="text" class="form-control" id="username" placeholder="password again">
+                            {{ form.password2 }}
                         </div>
                     <!-- <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
                         class="fw-bold text-body"><u>Login here</u></a></p> -->

@@ -18,6 +18,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context= super().get_context_data(**kwargs)
 
+        username= self.request.user.get_username()
         year= context.get('year') if context.get('year') else datetime.now().year
         month= context.get('month') if context.get('year') else datetime.now().strftime('%B')
 
@@ -36,10 +37,11 @@ class HomeView(TemplateView):
         pre_mn, pre_yr= (list_months[12], year -1) if month_num -1 < 1 else (list_months[month_num-1], year)
         nxt_mn, nxt_yr= (list_months[1], year +1) if month_num +1 > 12 else (list_months[month_num+1], year)
 
-        context.update({'year': year, 'month': month, 
+        context.update({'username': username, 'year': year, 'month': month, 
                         'month_num':month_num,'days_list': days_list,
                         'pre_mn':pre_mn, 'pre_yr':pre_yr,
-                        'nxt_mn':nxt_mn, 'nxt_yr':nxt_yr})
+                        'nxt_mn':nxt_mn, 'nxt_yr':nxt_yr,
+                        })
         return context
 
 # Change format of date
@@ -123,12 +125,13 @@ class DeleteMealView(DeleteView):
         self.kwargs.pop('pk')
         return reverse_lazy('diet:meals-by-day', kwargs= self.kwargs)
     
-
+@method_decorator(login_required, name='dispatch')
 class MealList(ListView):
     model= Meal
     template_name= 'diet/meal-list.html'
     paginate_by= 50
-
+    
+    
     def get_queryset(self):
         queryset= self.model.objects.all()
         start_date= self.request.GET.get('start_date')

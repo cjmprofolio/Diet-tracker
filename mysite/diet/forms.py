@@ -13,6 +13,7 @@ class MealModelForm(ModelForm):
         widgets={
             'date':forms.SelectDateWidget(attrs={'class':'form-control'}),
             'meal':forms.Select(attrs={'class':'form-control'}),
+            'calorie':forms.NumberInput(attrs={'class':'form-control'}),
             'food_name':forms.TextInput(attrs={'class':'form-control'}),
             'location':forms.TextInput(attrs={'class':'form-control'})
         }

@@ -16,8 +16,8 @@ class Meal(models.Model):
     date= models.DateField(default=datetime.today().date())
     meal= models.CharField(max_length=20, choices=MEAL_CHOICES, default='Breakfast')
     food_name= models.CharField(max_length=60)
-    calorie= models.IntegerField()
-    location= models.CharField(max_length=50, help_text=mark_safe('Enter the place you buy the food.'))
+    calorie= models.IntegerField(help_text='The unit is kcal')
+    location= models.CharField(max_length=50, help_text='Enter the place you buy the food.')
 
     def __str__(self):
         return f'{self.date} {self.meal}'
