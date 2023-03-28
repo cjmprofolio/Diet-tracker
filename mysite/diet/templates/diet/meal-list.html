@@ -30,6 +30,10 @@
                     <td>{{ meal.location }}</td>
                 </tr>
                 {% endfor %}
+            {% else %}
+                <tr>
+                <td style="text-align: center ;" colspan="6">No meal available...</td>
+                </tr>
             {% endif %}
         {% else %}
                 <tr>

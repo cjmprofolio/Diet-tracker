@@ -80,6 +80,7 @@ class AddMealView(CreateView):
     def post(self, *args, **kwargs):
         form= self.form_class(self.request.POST, **kwargs)
         if form.is_valid(): 
+            form.instance.name = self.request.user.get_username()
             form.save()
             messages.success(self.request, 'Congrats!! You have updated your diet.')
             return redirect(self.get_success_url())
@@ -133,7 +134,7 @@ class MealList(ListView):
     
     
     def get_queryset(self):
-        queryset= self.model.objects.all()
+        queryset= self.model.objects.filter(name= self.request.user.get_username())
         start_date= self.request.GET.get('start_date')
         end_date= self.request.GET.get('end_date')
         meal= self.request.GET.get('meal')

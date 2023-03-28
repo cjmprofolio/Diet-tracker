@@ -13,6 +13,7 @@ MEAL_CHOICES=[
     ('Midnight Snack', 'Midnight Snack')
 ]
 class Meal(models.Model):
+    name= models.CharField(default= None,  max_length=20)
     date= models.DateField(default=datetime.today().date())
     meal= models.CharField(max_length=20, choices=MEAL_CHOICES, default='Breakfast')
     food_name= models.CharField(max_length=60)
