@@ -32,7 +32,7 @@ Meal records on 2023-03-15 and 2023-03-16...<br>
 
 Click the add button<br>
 &#8595; meal list by day<br>
-![meal_list_by_day](./mysite/.github/Meal_list_by_day_20230316.png)
+![meal_list_by_day](./mysite/.github/Meal_list_by_day_20230314.png)
 
 Take down the meal detail<br>
 &#8595; add meal page<br>
