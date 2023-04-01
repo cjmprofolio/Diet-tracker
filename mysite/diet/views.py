@@ -1,5 +1,5 @@
 import calendar
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.shortcuts import  redirect
 from django.urls import reverse_lazy
 from .forms import MealModelForm
@@ -7,6 +7,7 @@ from .models import Meal
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib import messages
+from django.db import connection
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -52,6 +53,22 @@ def DateTransfer(kwargs):
 
     return year, month, day
 
+# Get weekrange from given date
+# def WeekRange(date:datetime.date):
+
+#     start_date= (date - timedelta(days= date.weekday())).date()
+#     end_date= (start_date + timedelta(days= 6))
+
+#     return start_date, end_date
+
+# Transfer sql date into Queryset-like form
+def DictFetchall(cursor):
+    "Return all rows from a cursor as a dict"
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
 
 class MealsListByDay(ListView):
     model= Meal
@@ -59,7 +76,17 @@ class MealsListByDay(ListView):
 
     def get_queryset(self, *args, **kwargs):
         year, month, day= DateTransfer(self.kwargs)
-        return self.model.objects.filter(date=datetime(year, month, day).date())
+        date= datetime(year, month, day).date().strftime('%Y-%m-%d')
+        queries= {'date': date, 'username': self.request.user.get_username()}
+        with connection.cursor() as cursor:
+            cursor.execute("With rank_table AS\
+                (SELECT *, RANK() OVER (\
+                    PARTITION BY date >= date_trunc('week', %(date)s::date), \
+                        date < date_trunc('week', %(date)s::date) + INTERVAL '7 days' ORDER BY calorie DESC) as rank FROM diet_meal)\
+                    SELECT * FROM rank_table WHERE date= %(date)s and name = %(username)s",
+                    params= queries)
+            queryset= DictFetchall(cursor)
+        return queryset
 
     def get_context_data(self, **kwargs):
         year, month, day= DateTransfer(self.kwargs)
@@ -135,6 +162,7 @@ class MealList(ListView):
     
     def get_queryset(self):
         queryset= self.model.objects.filter(name= self.request.user.get_username())
+        # queryset= self.model.objects.raw('SELECT * FROM diet_meal WHERE name = %s', [self.request.user.get_username()])
         start_date= self.request.GET.get('start_date')
         end_date= self.request.GET.get('end_date')
         meal= self.request.GET.get('meal')

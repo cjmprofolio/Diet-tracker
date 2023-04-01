@@ -21,15 +21,16 @@
               <tr>
                 <th scope="col" class="col-2">Meal</th>
                 <th scope="col" class="col-2">Food_name</th>
-                <th scope="col" class="col-2">Calorie</th>
                 <th scope="col" class="col-2">Location</th>
+                <th scope="col" class="col-2">Calorie</th>
+                <th scope="col" class="col-2">Weekly Rank</th>
                 <th scope="col" class="col-1">action</th>
               </tr>
             </thead>
             <tbody>
             {% if not object_list %}
               <tr>
-                <td style="text-align: center ;" colspan="5">No meal available...</td>
+                <td style="text-align: center ;" colspan="6">No meal available...</td>
               </tr>
             {% endif %}
 
@@ -37,8 +38,9 @@
               <tr>
                 <td>{{ meal.meal }}</td>
                 <td>{{ meal.food_name }}</td>
-                <td>{{ meal.calorie }}</td>
                 <td>{{ meal.location }}</td>
+                <td>{{ meal.calorie }}</td>
+                <td>{{ meal.rank }}</td>
                 <th scope="col">
                   <a href="{% url 'diet:update-meal' year month day meal.id %}" class="text-decoration-none">
                     <button type="button" class="btn btn-sm btn-outline-secondary">
