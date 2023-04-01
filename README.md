@@ -24,15 +24,21 @@ Pick one date<br>
 &#8595; home page<br>
 ![Home](./mysite/.github/Home.png)<br>
 
+Assume that there are already meal records on 2023-03-15 and 2023-03-16 and want to add record on 2023-03-14. ...
+
+Meal records on 2023-03-15 and 2023-03-16...<br>
+![meal_list_by_day_20230315](./mysite/.github/meal_list_by_day_20230315.png)
+![meal_list_by_day_20230316](./mysite/.github/meal_list_by_day_20230315.png)
+
 Click the add button<br>
 &#8595; meal list by day<br>
-![meal_list_by_day](./mysite/.github/Meal_list_by_day.png)
+![meal_list_by_day](./mysite/.github/meal_list_by_day.png)
 
 Take down the meal detail<br>
 &#8595; add meal page<br>
 ![add_meal](./mysite/.github/Add_meal.png)<br>
 
-After adding the meal<br>
+After adding the meal, you can your meal with weekly calorie rank<br>
 &#8595; after adding<br>
 ![add_successfully](./mysite/.github/add_meal_successful.png)<br>
 
@@ -48,4 +54,4 @@ Or, delete specific meal<br>
 You can also view the meal history at the Meals history page.<br>
 
 &#8595; meals-history page<br>
-![Update](./mysite/.github/Update.png)
+![meal_list](./mysite/.github/meal_list.png)
