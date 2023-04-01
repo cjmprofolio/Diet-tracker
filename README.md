@@ -28,7 +28,7 @@ Assume that there are already meal records on 2023-03-15 and 2023-03-16 and want
 
 Meal records on 2023-03-15 and 2023-03-16...<br>
 ![meal_list_by_day_20230315](./mysite/.github/Meal_list_by_day_20230315.png)
-![meal_list_by_day_20230316](./mysite/.github/Meal_list_by_day_20230315.png)
+![meal_list_by_day_20230316](./mysite/.github/Meal_list_by_day_20230316.png)
 
 Click the add button<br>
 &#8595; meal list by day<br>
